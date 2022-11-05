@@ -1,0 +1,19 @@
+.floor-card,
+.floor-card > div {
+  border: none !important;
+  background-color: #d9d9d966 !important;
+  opacity: 70%;
+  cursor: pointer;
+}
+.floor-card {
+  height: 300px;
+  width: 300px;
+}
+.circular-progress {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+}
+.floor-card:hover {
+  opacity: 100%;
+}

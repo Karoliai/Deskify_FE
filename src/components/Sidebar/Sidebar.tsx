@@ -1,5 +1,5 @@
 import { Image } from "react-bootstrap";
-import Logo from "../assets/logo.png";
+import Logo from "../../assets/logo.png";
 import "./Sidebar.css";
 import { BoxArrowLeft } from "react-bootstrap-icons";
 
