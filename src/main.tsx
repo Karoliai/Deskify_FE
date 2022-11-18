@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Reservation from "./pages/Reservation/Reservation";
 
 const router = createBrowserRouter([
+  { path: "/", element: <Login /> },
   {
     path: "login",
     element: <Login />,
