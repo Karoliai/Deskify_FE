@@ -1,0 +1,12 @@
+.white-bg {
+  background-color: #fff;
+  opacity: 0.7;
+}
+.table-container {
+  min-height: 500px;
+  padding: 0 2rem;
+}
+.photo-container {
+  display: grid;
+  place-items: center;
+}
