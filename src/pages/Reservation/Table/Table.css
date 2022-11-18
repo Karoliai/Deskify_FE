@@ -1,0 +1,29 @@
+table {
+  margin: 0 !important;
+}
+table svg {
+  cursor: pointer;
+}
+th:first-child,
+td:first-child {
+  width: 10%;
+}
+th,
+td {
+  text-align: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--stroke) !important;
+}
+.free {
+  color: var(--success);
+}
+.occupied {
+  color: var(--failure);
+}
+.occupied {
+  background-color: var(--danger);
+}
+.total-txt {
+  display: flex;
+  justify-content: flex-end;
+}
