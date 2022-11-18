@@ -10,7 +10,7 @@ function Reservation() {
     <div className="vw-100 vh-100 light-bg d-flex">
       <Sidebar />
       <div className="w-100 mx-5">
-        <Header />
+        <Header text="Reservations" />
         <div className="m-5">
           <h2>First Floor</h2>
           <Container>
