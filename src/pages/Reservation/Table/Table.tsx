@@ -1,43 +1,25 @@
-import { Col, Container, Row, Table } from "react-bootstrap";
-import { CalendarPlusFill, ChevronDown } from "react-bootstrap-icons";
-import GreenButton from "../../../components/Buttons/GreenButton";
+import { useContext } from "react";
+import { Table } from "react-bootstrap";
+import { TableReservationsInt } from "../../../TempData";
+import { TableContext } from "../Reservation";
+import Filters from "./Filters/Filters";
 import "./Table.css";
+import TableBody from "./TableBody/TableBody";
+import TableHead from "./TableHead/TableHead";
 
-function ReservationTable() {
+function ReservationTable({}) {
+  const { table } = useContext(TableContext);
+  const [tableReservations] = table as [TableReservationsInt];
+
   return (
     <>
-      <Container>
-        <Row>
-          <Col className="d-flex justify-content-end mt-3">
-            <GreenButton
-              text={`State `}
-              icon={<ChevronDown />}
-              className="me-2"
-            ></GreenButton>
-            <GreenButton text={`Today `} icon={<ChevronDown />}></GreenButton>
-          </Col>
-        </Row>
-      </Container>
-      <Table borderless hover responsive>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>State</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td className="free">Free</td>
-            <td>
-              <CalendarPlusFill />
-            </td>
-          </tr>
-        </tbody>
+      <Filters />
+      <Table borderless hover responsive className="mb-2">
+        <TableHead HeadElements={["#", "State", "Action"]} />
+        <TableBody />
       </Table>
-      <div className="total-txt">
-        <span>Total tables 2</span>
+      <div className="d-flex justify-content-end">
+        <span>Total tables {tableReservations.tables.length}</span>
       </div>
     </>
   );
