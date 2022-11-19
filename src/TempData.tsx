@@ -24,15 +24,24 @@ export const FloorData = [
     percentage: 100,
   },
 ];
-export const FloorReservations = {
+
+export interface TableReservationsInt {
+  photo: string;
+  tables: {
+    State: "Free" | "Reserved" | "Any";
+    id: number;
+  }[];
+}
+
+export const TableReservations: TableReservationsInt = {
   photo: "https://i.imgur.com/3Z0Q3Yt.png",
-  floors: [
+  tables: [
     { State: "Free", id: 1 },
-    { State: "Free", id: 2 },
+    { State: "Reserved", id: 2 },
     { State: "Free", id: 3 },
-    { State: "Free", id: 4 },
-    { State: "Free", id: 5 },
-    { State: "Free", id: 6 },
+    { State: "Reserved", id: 4 },
+    { State: "Reserved", id: 5 },
+    { State: "Reserved", id: 6 },
     { State: "Free", id: 7 },
     { State: "Free", id: 8 },
   ],

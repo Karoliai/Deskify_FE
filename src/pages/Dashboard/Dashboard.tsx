@@ -4,7 +4,7 @@ import chunk from "lodash/chunk";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import FloorCard from "./FloorCard/FloorCard";
-import { FloorData } from "../../TemData";
+import { FloorData } from "../../TempData";
 
 function Dashboard() {
   const renderFloorCards = () => {

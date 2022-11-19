@@ -1,6 +1,13 @@
-table {
-  margin: 0 !important;
+thead,
+tbody {
+  display: block;
 }
+tbody {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 500px;
+}
+
 table svg {
   cursor: pointer;
 }
@@ -13,17 +20,15 @@ td {
   text-align: center;
   padding: 0.5rem;
   border-bottom: 1px solid var(--stroke) !important;
+  width: 100%;
+  height: 25px;
 }
 .free {
   color: var(--success);
 }
-.occupied {
+.reserved {
   color: var(--failure);
 }
 .occupied {
   background-color: var(--danger);
-}
-.total-txt {
-  display: flex;
-  justify-content: flex-end;
 }
