@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -7,6 +7,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Reservation from "./pages/Reservation/Reservation";
+
+export const AuthContext = createContext(
+  () =>
+    JSON.parse(localStorage.getItem("isAdmin") || `{"isAdmin": "false"}`) as {
+      isAdmin: boolean;
+    }
+);
 
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
@@ -26,6 +33,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthContext.Provider
+      value={() =>
+        JSON.parse(localStorage.getItem("isAdmin") || `{"isAdmin": "false"}`)
+      }
+    >
+      <RouterProvider router={router} />
+    </AuthContext.Provider>
   </React.StrictMode>
 );

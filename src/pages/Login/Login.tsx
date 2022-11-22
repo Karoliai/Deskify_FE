@@ -14,9 +14,12 @@ function Login() {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-    } else {
-      navigate("/dashboard");
+      return;
     }
+    if (form[0].value === "admin" && form[1].value === "admin") {
+      localStorage.setItem("isAdmin", "true");
+    }
+    navigate("/dashboard");
 
     setValidated(true);
   };
