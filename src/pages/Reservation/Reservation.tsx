@@ -12,11 +12,14 @@ import ReservationPhoto from "./Photo/Photo";
 import ReservationTable from "./Table/Table";
 import { TableReservations, TableReservationsInt } from "../../TempData";
 import "./Reservation.css";
+import { useLocation } from "react-router";
+import ordinal from "ordinal";
 
 const initialTableReservations = {
   photo: "",
   tables: [],
 };
+
 
 export const TableContext = createContext<{
   table: (
@@ -37,13 +40,16 @@ function Reservation() {
 
   const tableStore = { table: [tableReservations, setTableReservations] };
 
-  return (
+  const url=useLocation();
+  const floor = url.pathname.split("/")[url.pathname.split("/").length-1];
+
+   return (
     <div className="vw-100 vh-100 light-bg d-flex">
       <Sidebar />
       <div className="w-100 mx-5">
         <Header text="Reservations" />
         <div className="m-5">
-          <h2 className="container p-0">First Floor</h2>
+          <h2 className="container p-0">{`${ordinal(+floor)} Floor`}</h2>
           <Container>
             <TableContext.Provider value={tableStore}>
               <Row>
