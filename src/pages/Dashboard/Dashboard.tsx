@@ -1,5 +1,4 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { useNavigate } from "react-router";
 import chunk from "lodash/chunk";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -24,11 +23,11 @@ function Dashboard() {
   };
 
   return (
-    <div className="vw-100 vh-100 light-bg d-flex">
+    <div className="overflow-auto vh-100 light-bg d-flex">
       <Sidebar />
       <div className="w-100 mx-5">
         <Header text="Good morning!" />
-        <div className="m-5">
+        <div className="container mt-5">
           <h2>Floors</h2>
           <Container className="m-0">
             <Row className="mb-4">{renderFloorCards()}</Row>

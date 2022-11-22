@@ -43,7 +43,7 @@ function Reservation() {
       <div className="w-100 mx-5">
         <Header text="Reservations" />
         <div className="m-5">
-          <h2>First Floor</h2>
+          <h2 className="container p-0">First Floor</h2>
           <Container>
             <TableContext.Provider value={tableStore}>
               <Row>

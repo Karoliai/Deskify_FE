@@ -5,7 +5,7 @@ import { BoxArrowLeft } from "react-bootstrap-icons";
 
 function Sidebar() {
   return (
-    <nav className="sidebar d-flex flex-column justify-content-space-between h-100 pt-3">
+    <nav className="sidebar d-flex flex-column justify-content-space-between pt-3">
       <div className="sidebar-header h-25">
         <Image src={Logo} className="w-100 p-2" />
       </div>
