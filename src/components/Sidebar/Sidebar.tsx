@@ -2,36 +2,34 @@ import { Image } from "react-bootstrap";
 import Logo from "../../assets/logo.png";
 import "./Sidebar.css";
 import { BoxArrowLeft } from "react-bootstrap-icons";
+import { useNavigate } from "react-router";
+import { useCallback } from "react";
 
 function Sidebar() {
+
+  const navigate = useNavigate();
+  const redirect = (floor: number) =>
+    navigate(`/reservation/${floor}`);
+
   return (
     <nav className="sidebar d-flex flex-column justify-content-space-between pt-3">
       <div className="sidebar-header h-25">
         <Image src={Logo} className="w-100 p-2" />
       </div>
-
+      
       <ul className="list-unstyled components h-75 text-center">
-        <li className="display-6">
-          <span>1</span>
-        </li>
-        <li className="display-6">
-          <span>2</span>
-        </li>
-        <li className="display-6">
-          <span>3</span>
-        </li>
-        <li className="display-6">
-          <span>4</span>
-        </li>
-        <li className="display-6">
-          <span>5</span>
-        </li>
-        <li className="display-6">
-          <span>6</span>
-        </li>
+      {[1,2,3,4,5,6].map(floor => 
+      <li className="display-6" onClick={() => redirect(floor)}>
+        <span>{floor}</span>
+        </li>)}
       </ul>
 
-      <div className="d-flex justify-content-center align-items-center mb-5">
+      <div className="d-flex justify-content-center align-items-center mb-5" onClick={
+        () => {
+          localStorage.removeItem("isAdmin");
+        navigate('/login')
+        }
+      }>
         <BoxArrowLeft className="log-out" height={50} width={50} />
       </div>
     </nav>
