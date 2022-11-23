@@ -6,8 +6,12 @@ import { useNavigate } from "react-router";
 import { useCallback } from "react";
 
 function Sidebar() {
-
   const navigate = useNavigate();
+
+function LogOut(){
+  localStorage.removeItem("isAdmin");
+  navigate('/login');
+}
   const redirect = (floor: number) =>
     navigate(`/reservation/${floor}`);
 
@@ -24,12 +28,7 @@ function Sidebar() {
         </li>)}
       </ul>
 
-      <div className="d-flex justify-content-center align-items-center mb-5" onClick={
-        () => {
-          localStorage.removeItem("isAdmin");
-        navigate('/login')
-        }
-      }>
+      <div className="d-flex justify-content-center align-items-center mb-5" onClick={LogOut}>
         <BoxArrowLeft className="log-out" height={50} width={50} />
       </div>
     </nav>
