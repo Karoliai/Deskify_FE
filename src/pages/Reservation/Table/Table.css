@@ -1,0 +1,34 @@
+thead,
+tbody {
+  display: block;
+}
+tbody {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 500px;
+}
+
+table svg {
+  cursor: pointer;
+}
+th:first-child,
+td:first-child {
+  width: 10%;
+}
+th,
+td {
+  text-align: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--stroke) !important;
+  width: 100%;
+  height: 25px;
+}
+.free {
+  color: var(--success);
+}
+.reserved {
+  color: var(--failure);
+}
+.occupied {
+  background-color: var(--danger);
+}

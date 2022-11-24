@@ -1,0 +1,11 @@
+.white-bg {
+  background-color: #fff;
+  opacity: 0.7;
+}
+.table-container {
+  padding: 0rem 2rem 2rem;
+}
+.photo-container {
+  display: grid;
+  place-items: center;
+}

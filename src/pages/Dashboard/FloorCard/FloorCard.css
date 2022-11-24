@@ -9,6 +9,10 @@
   height: 300px;
   width: 300px;
 }
+.floor-card img {
+  width: 40px;
+  height: 40px;
+}
 .circular-progress {
   height: 200px;
   width: 200px;

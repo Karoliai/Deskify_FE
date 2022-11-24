@@ -1,0 +1,10 @@
+.green-button {
+  background-color: var(--success) !important;
+  border: none;
+  opacity: 0.7;
+  border-radius: 20px;
+}
+.green-button:hover {
+  opacity: 1;
+  color: var(--text);
+}
