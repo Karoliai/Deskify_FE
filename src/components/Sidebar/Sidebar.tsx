@@ -8,6 +8,7 @@ function Sidebar() {
   const navigate = useNavigate();
 
   function LogOut() {
+    localStorage.removeItem("isAdmin");
     navigate("/login");
   }
 

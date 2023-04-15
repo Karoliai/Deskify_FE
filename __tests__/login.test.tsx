@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 
 describe("Login test", () => {
   beforeEach(() => {
+    localStorage.clear();
     render(
       <BrowserRouter>
         <Login />
@@ -63,5 +64,35 @@ describe("Login test", () => {
     fireEvent.click(loginButton);
 
     expect(await screen.queryByText(/Bad Username or Password/i)).toBeNull();
+  });
+  
+  test("User is an admin", async () => {
+    const usernameInput: HTMLInputElement =
+      screen.getByPlaceholderText(/Enter your username/i);
+    const passwordInput: HTMLInputElement =
+      screen.getByPlaceholderText(/Enter your password/i);
+    const loginButton = screen.getByText(/Sign In/i);
+
+    usernameInput.value = "admin";
+    passwordInput.value = "admin";
+
+    fireEvent.click(loginButton);
+
+    expect(await localStorage.getItem("isAdmin")).toBeDefined();
+  });
+
+  test("User is NOT an admin", async () => {
+    const usernameInput: HTMLInputElement =
+      screen.getByPlaceholderText(/Enter your username/i);
+    const passwordInput: HTMLInputElement =
+      screen.getByPlaceholderText(/Enter your password/i);
+    const loginButton = screen.getByText(/Sign In/i);
+
+    usernameInput.value = "qwerty123";
+    passwordInput.value = "admin1";
+
+    fireEvent.click(loginButton);
+
+    expect(await localStorage.getItem("isAdmin")).toBeNull();
   });
 });
