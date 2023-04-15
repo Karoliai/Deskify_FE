@@ -10,13 +10,18 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.194",
     "bootstrap": "^5.2.3",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.3",
+    "react-bootstrap-icons": "^1.10.3",
+    "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/bootstrap": "^5.2.6",
     "@types/react": "^18.0.28",

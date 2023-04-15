@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Image } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Logo from "../assets/logo.png";
+import Logo from "../../assets/logo.png";
 
 function Login() {
   const [validated, setValidated] = useState<boolean | undefined>();
