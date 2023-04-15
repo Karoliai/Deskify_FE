@@ -1,0 +1,14 @@
+.sidebar {
+  width: 110px;
+  background-color: #d9d9d966;
+}
+
+.sidebar li {
+  margin: 38px 0;
+}
+.sidebar li span {
+  cursor: pointer;
+}
+.log-out {
+  cursor: pointer;
+}

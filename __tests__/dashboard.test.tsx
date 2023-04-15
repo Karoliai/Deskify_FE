@@ -3,6 +3,8 @@ import { beforeEach, describe, expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Dashboard from "../src/pages/Dashbord/Dashboard";
+import { BrowserRouter } from "react-router-dom";
+import jest from "jest-mock";
 
 interface FloorData {
   id: number;
@@ -11,7 +13,11 @@ interface FloorData {
 
 describe("Dashboard test", () => {
   beforeEach(() => {
-    render(<Dashboard />);
+    render(
+      <BrowserRouter>
+        <Dashboard />
+      </BrowserRouter>
+    );
   });
 
   const mockFloorData: FloorData[] = [
@@ -36,17 +42,64 @@ describe("Dashboard test", () => {
     expect(floorCards).toHaveLength(9);
   });
 
-  test("renders user greeting", () => {
-    const userGreeting = screen.getByText(/Good/i);
-    expect(userGreeting).toBeInTheDocument();
-  });
-
   test("renders floor cards correctly", () => {
     const floorCards = screen.getAllByTestId("floor-card");
 
     floorCards.forEach((card, index) => {
       const floorId = mockFloorData[index].id;
       expect(card).toHaveTextContent(`${floorId}`);
+    });
+  });
+});
+
+describe("Dashboard component", () => {
+  describe("getGreetingsByTimeOfDay function", () => {
+    test("returns 'Good morning!' in the morning", () => {
+      jest
+        .spyOn(global.Date, "now")
+        .mockImplementationOnce(() =>
+          new Date("2023-04-15T07:00:00.000Z").valueOf()
+        );
+
+      const { getByTestId } = render(
+        <BrowserRouter>
+          <Dashboard />
+        </BrowserRouter>
+      );
+
+      expect(getByTestId("header")).toHaveTextContent("Good morning!");
+    });
+
+    test("returns 'Good afternoon!' in the afternoon", () => {
+      jest
+        .spyOn(global.Date, "now")
+        .mockImplementationOnce(() =>
+          new Date("2023-04-15T14:00:00.000Z").valueOf()
+        );
+
+      const { getByTestId } = render(
+        <BrowserRouter>
+          <Dashboard />
+        </BrowserRouter>
+      );
+
+      expect(getByTestId("header")).toHaveTextContent("Good afternoon!");
+    });
+
+    test("returns 'Good evening!' in the evening", () => {
+      jest
+        .spyOn(global.Date, "now")
+        .mockImplementationOnce(() =>
+          new Date("2023-04-15T20:00:00.000Z").valueOf()
+        );
+
+      const { getByTestId } = render(
+        <BrowserRouter>
+          <Dashboard />
+        </BrowserRouter>
+      );
+
+      expect(getByTestId("header")).toHaveTextContent("Good evening!");
     });
   });
 });
