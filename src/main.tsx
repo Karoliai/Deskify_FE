@@ -2,7 +2,9 @@ import React, { createContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Login from "./pages/Login";
+import Login from "./pages/Login/Login";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Dashboard from "./pages/Dashbord/Dashboard";
 
 export const AuthContext = createContext(
   () =>
@@ -11,6 +13,18 @@ export const AuthContext = createContext(
     }
 );
 
+const router = createBrowserRouter([
+  { path: "/", element: <Login /> },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <AuthContext.Provider
@@ -18,7 +32,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         JSON.parse(localStorage.getItem("isAdmin") || `{"isAdmin": "false"}`)
       }
     >
-      <Login />
+      <RouterProvider router={router} />
     </AuthContext.Provider>
   </React.StrictMode>
 );

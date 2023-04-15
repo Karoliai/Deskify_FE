@@ -1,7 +1,7 @@
 import React from "react";
 import { beforeEach, describe, expect, test } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
-import Login from "../src/pages/Login";
+import Login from "../src/pages/Login/Login";
 
 describe("Login test", () => {
   beforeEach(() => {
