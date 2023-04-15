@@ -11,19 +11,20 @@ function FloorCard({
   floor: number;
   percentage: number;
 }) {
-  const circleStatusText = (percentage: number) => {
-    if (percentage <= 1) {
-      return "Empty";
-    } else if (percentage <= 25) {
-      return "Low";
-    } else if (percentage <= 50) {
-      return "Moderate";
-    } else if (percentage <= 99) {
-      return "High";
-    } else {
-      return "Full";
+  function getUsageStatus(percentage: number): string {
+    switch (true) {
+      case percentage <= 1:
+        return "Empty";
+      case percentage <= 25:
+        return "Low";
+      case percentage <= 50:
+        return "Moderate";
+      case percentage <= 99:
+        return "High";
+      default:
+        return "Full";
     }
-  };
+  }
 
   return (
     <Card className="floor-card">
@@ -34,7 +35,7 @@ function FloorCard({
       <Card.Body className="d-flex justify-content-center align-items-start">
         <CircularProgressbar
           value={percentage}
-          text={circleStatusText(percentage)}
+          text={getUsageStatus(percentage)}
           circleRatio={0.5}
           styles={buildStyles({
             rotation: 0.75,
