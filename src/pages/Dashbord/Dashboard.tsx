@@ -2,7 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import chunk from "lodash/chunk";
 import FloorCard from "./FloorCard/FloorCard";
 import { FloorData } from "../../TempData";
-import Header from "../../components/header/Header";
+import Header from "../../components/Header/Header";
 
 interface FloorData {
   id: number;
@@ -35,12 +35,12 @@ function Dashboard() {
     } else {
       return "Good evening!";
     }
-  }
+  };
 
   return (
     <div className="overflow-auto vh-100 light-bg d-flex">
       <div className="w-100 mx-5">
-      <Header text={getGreetingsByTimeOfDay()} />
+        <Header text={getGreetingsByTimeOfDay()} />
         <div className="container mt-5">
           <h2>Floors</h2>
           <Container className="m-0">

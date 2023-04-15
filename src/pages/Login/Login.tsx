@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Image } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Logo from "../../assets/logo.png";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 function Login() {
   const [validated, setValidated] = useState<boolean | undefined>();
@@ -19,8 +19,9 @@ function Login() {
       passwordRef.current?.value === "admin1"
     ) {
       navigate("/dashboard");
+    } else {
+      setValidated(false);
     }
-    setValidated(false);
   };
 
   return (

@@ -26,8 +26,6 @@ describe("Dashboard test", () => {
     { id: 9, percentage: 60 },
   ];
 
-  
-
   test("renders dashboard title", () => {
     const dashboardTitle = screen.getByText(/Floors/i);
     expect(dashboardTitle).toBeInTheDocument();
