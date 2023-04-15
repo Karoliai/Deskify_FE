@@ -2,10 +2,15 @@ import React from "react";
 import { beforeEach, describe, expect, test } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import Login from "../src/pages/Login/Login";
+import { BrowserRouter } from "react-router-dom";
 
 describe("Login test", () => {
   beforeEach(() => {
-    render(<Login />);
+    render(
+      <BrowserRouter>
+        <Login />
+      </BrowserRouter>
+    );
   });
 
   test("No username or password inputted", async () => {

@@ -36,6 +36,11 @@ describe("Dashboard test", () => {
     expect(floorCards).toHaveLength(9);
   });
 
+  test("renders user greeting", () => {
+    const userGreeting = screen.getByText(/Good/i);
+    expect(userGreeting).toBeInTheDocument();
+  });
+
   test("renders floor cards correctly", () => {
     const floorCards = screen.getAllByTestId("floor-card");
 
