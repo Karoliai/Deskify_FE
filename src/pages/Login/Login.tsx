@@ -1,11 +1,13 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Image } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Logo from "../../assets/logo.png";
+import { Navigate, useNavigate } from "react-router";
 
 function Login() {
   const [validated, setValidated] = useState<boolean | undefined>();
+  const navigate = useNavigate();
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -16,10 +18,9 @@ function Login() {
       usernameRef.current?.value === "qwerty123" &&
       passwordRef.current?.value === "admin1"
     ) {
-      setValidated(true);
-    } else {
-      setValidated(false);
+      navigate("/dashboard");
     }
+    setValidated(false);
   };
 
   return (

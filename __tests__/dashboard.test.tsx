@@ -26,6 +26,8 @@ describe("Dashboard test", () => {
     { id: 9, percentage: 60 },
   ];
 
+  
+
   test("renders dashboard title", () => {
     const dashboardTitle = screen.getByText(/Floors/i);
     expect(dashboardTitle).toBeInTheDocument();
@@ -34,6 +36,11 @@ describe("Dashboard test", () => {
   test("renders floor cards", () => {
     const floorCards = screen.getAllByTestId("floor-card");
     expect(floorCards).toHaveLength(9);
+  });
+
+  test("renders user greeting", () => {
+    const userGreeting = screen.getByText(/Good/i);
+    expect(userGreeting).toBeInTheDocument();
   });
 
   test("renders floor cards correctly", () => {
