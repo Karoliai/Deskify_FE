@@ -5,13 +5,13 @@ import { FloorData } from "../../TempData";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
-interface FloorData {
+interface FloorDataInt {
   id: number;
   percentage: number;
 }
 
 function Dashboard() {
-  const renderFloorCards = (FloorData: FloorData[]) => {
+  const renderFloorCards = (FloorData: FloorDataInt[]) => {
     return chunk(FloorData, 3).map((chunk, index) => {
       return (
         <Row key={index} className="mb-4">

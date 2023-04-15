@@ -18,7 +18,7 @@ function Sidebar() {
       </div>
 
       <button
-        className="d-flex justify-content-center align-items-center mb-5"
+        className="d-flex justify-content-center align-items-center mb-5 bg-transparent border-0"
         onClick={LogOut}
       >
         <BoxArrowLeft className="log-out" height={50} width={50} />
