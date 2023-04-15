@@ -2,10 +2,10 @@ import { useRef, useState } from "react";
 import { Image } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Logo from "./logo.png";
+import Logo from "../assets/logo.png";
 
 function Login() {
-  const [validated, setValidated] = useState<boolean|undefined>();
+  const [validated, setValidated] = useState<boolean | undefined>();
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -25,7 +25,9 @@ function Login() {
   return (
     <div className="vw-100 vh-100 d-flex justify-content-center align-items-center dark-bg flex-column">
       <Image src={Logo} className="mb-5" />
-      {validated===false && <p className="text-danger">Bad Username or Password</p>}
+      {validated === false && (
+        <p className="text-danger">Bad Username or Password</p>
+      )}
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label className="mb-0 text-white">
