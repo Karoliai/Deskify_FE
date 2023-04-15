@@ -3,14 +3,15 @@ import chunk from "lodash/chunk";
 import FloorCard from "./FloorCard/FloorCard";
 import { FloorData } from "../../TempData";
 import Header from "../../components/Header/Header";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
-interface FloorData {
+interface FloorDataInt {
   id: number;
   percentage: number;
 }
 
 function Dashboard() {
-  const renderFloorCards = (FloorData: FloorData[]) => {
+  const renderFloorCards = (FloorData: FloorDataInt[]) => {
     return chunk(FloorData, 3).map((chunk, index) => {
       return (
         <Row key={index} className="mb-4">
@@ -27,7 +28,7 @@ function Dashboard() {
   };
 
   const getGreetingsByTimeOfDay = () => {
-    const currentHour = new Date().getHours();
+    const currentHour = new Date(Date.now()).getHours();
     if (currentHour < 12) {
       return "Good morning!";
     } else if (currentHour < 18) {
@@ -39,6 +40,7 @@ function Dashboard() {
 
   return (
     <div className="overflow-auto vh-100 light-bg d-flex">
+      <Sidebar />
       <div className="w-100 mx-5">
         <Header text={getGreetingsByTimeOfDay()} />
         <div className="container mt-5">
