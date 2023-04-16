@@ -14,6 +14,11 @@ function Login() {
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
+    if (usernameRef.current?.value === "admin" && passwordRef.current?.value === "admin") {
+      localStorage.setItem("isAdmin", JSON.stringify({ isAdmin: true }));
+      navigate("/dashboard");
+    }
+
     if (
       usernameRef.current?.value === "qwerty123" &&
       passwordRef.current?.value === "admin1"
@@ -33,7 +38,7 @@ function Login() {
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label className="mb-0 text-white">
-            Username<strong className="text-danger"></strong>
+            Username<strong className="text-danger"></strong> 
           </Form.Label>
           <Form.Control
             ref={usernameRef}
