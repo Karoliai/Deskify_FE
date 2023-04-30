@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - feature/*
+      - 'feature/*'
 
 jobs:
   build:
@@ -52,3 +52,23 @@ jobs:
 
       - name: Run tests
         run: npm run test
+
+  deploy:
+    name: Deploy
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/gh-pages' || startsWith(github.ref, 'refs/heads/feature/')
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: production-files
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
