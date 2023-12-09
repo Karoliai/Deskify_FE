@@ -20,7 +20,6 @@ const initialTableReservations = {
   tables: [],
 };
 
-
 export const TableContext = createContext<{
   table: (
     | TableReservationsInt
@@ -40,10 +39,10 @@ function Reservation() {
 
   const tableStore = { table: [tableReservations, setTableReservations] };
 
-  const url=useLocation();
-  const floor = url.pathname.split("/")[url.pathname.split("/").length-1];
+  const url = useLocation();
+  const floor = url.pathname.split("/")[url.pathname.split("/").length - 1];
 
-   return (
+  return (
     <div className="vw-100 vh-100 light-bg d-flex">
       <Sidebar />
       <div className="w-100 mx-5">

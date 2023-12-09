@@ -11,7 +11,7 @@ import Reservation from "./pages/Reservation/Reservation";
 export const AuthContext = createContext(
   () =>
     JSON.parse(localStorage.getItem("isAdmin") || `{"isAdmin": "false"}`) as {
-      isAdmin: boolean;
+      isAdmin: string;
     }
 );
 

@@ -8,4 +8,5 @@
 .photo-container {
   display: grid;
   place-items: center;
+  grid-template-rows: 10% 90%;
 }
