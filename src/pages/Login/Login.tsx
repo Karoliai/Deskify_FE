@@ -1,51 +1,39 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Image } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Logo from "../../assets/logo.png";
 import { useNavigate } from "react-router";
+import Logo from "../../assets/logo.png";
 
 function Login() {
-  const [validated, setValidated] = useState<boolean | undefined>();
+  const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
-  const usernameRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (event: any) => {
-    event.preventDefault();
-
-    if (usernameRef.current?.value === "admin" && passwordRef.current?.value === "admin") {
-      localStorage.setItem("isAdmin", JSON.stringify({ isAdmin: true }));
-      navigate("/dashboard");
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
     }
-
-    if (
-      usernameRef.current?.value === "qwerty123" &&
-      passwordRef.current?.value === "admin1"
-    ) {
-      navigate("/dashboard");
-    } else {
-      setValidated(false);
+    if (form[0].value === "admin" && form[1].value === "admin") {
+      localStorage.setItem("isAdmin", "true");
     }
+    navigate("/dashboard");
+
+    setValidated(true);
   };
 
   return (
     <div className="vw-100 vh-100 d-flex justify-content-center align-items-center dark-bg flex-column">
       <Image src={Logo} className="mb-5" />
-      {validated === false && (
-        <p className="text-danger">Bad Username or Password</p>
-      )}
+
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label className="mb-0 text-white">
-            Username<strong className="text-danger"></strong> 
+            Username<strong className="text-danger">*</strong>
           </Form.Label>
-          <Form.Control
-            ref={usernameRef}
-            required
-            type="username"
-            placeholder="Enter your username"
-          />
+          <Form.Control required type="username" />
           <Form.Control.Feedback type="invalid">
             Please provide Username.
           </Form.Control.Feedback>
@@ -53,14 +41,9 @@ function Login() {
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label className="mb-0 text-white">
-            Password<strong className="text-danger"></strong>
+            Password<strong className="text-danger">*</strong>
           </Form.Label>
-          <Form.Control
-            ref={passwordRef}
-            required
-            type="password"
-            placeholder="Enter your password"
-          />
+          <Form.Control required type="password" />
           <Form.Control.Feedback type="invalid">
             Please provide Password.
           </Form.Control.Feedback>

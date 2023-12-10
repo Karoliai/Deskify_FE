@@ -2,14 +2,16 @@ import React, { createContext } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Login from "./pages/Login/Login";
+import "react-circular-progressbar/dist/styles.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Dashboard from "./pages/Dashbord/Dashboard";
+import Login from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Reservation from "./pages/Reservation/Reservation";
 
 export const AuthContext = createContext(
   () =>
     JSON.parse(localStorage.getItem("isAdmin") || `{"isAdmin": "false"}`) as {
-      isAdmin: boolean;
+      isAdmin: string;
     }
 );
 
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "reservation/:reservationId",
+    element: <Reservation />,
   },
 ]);
 

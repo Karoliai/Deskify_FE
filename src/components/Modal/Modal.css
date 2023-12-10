@@ -1,0 +1,27 @@
+.alert-modal {
+  min-width: 500px;
+  min-height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #75c9b7;
+  border: 3px solid #000000;
+  border-radius: 50px;
+  display: grid;
+  place-items: center;
+}
+.alert-modal h1 {
+  margin: 1rem 0;
+  color: #000;
+}
+
+.alert-modal > div {
+  padding: 1rem 0;
+}
+.alert-modal button {
+  margin: 0.5rem;
+}
+.hide {
+  display: none;
+}

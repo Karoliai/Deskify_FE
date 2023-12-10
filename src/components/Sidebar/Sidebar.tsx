@@ -11,19 +11,28 @@ function Sidebar() {
     localStorage.removeItem("isAdmin");
     navigate("/login");
   }
+  const redirect = (floor: number) => navigate(`/reservation/${floor}`);
 
   return (
-    <nav className="sidebar d-flex flex-column justify-content-between align-items-stretch pt-3">
+    <nav className="sidebar d-flex flex-column justify-content-space-between pt-3">
       <div className="sidebar-header h-25">
-        <Image src={Logo} alt="company-logo" className="w-100 p-2" />
+        <Image src={Logo} className="w-100 p-2" />
       </div>
 
-      <button
-        className="d-flex justify-content-center align-items-center mb-5 bg-transparent border-0"
+      <ul className="list-unstyled components h-75 text-center">
+        {[1, 2, 3, 4, 5, 6].map((floor, index) => (
+          <li key={index} className="display-6" onClick={() => redirect(floor)}>
+            <span>{floor}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div
+        className="d-flex justify-content-center align-items-center mb-5"
         onClick={LogOut}
       >
         <BoxArrowLeft className="log-out" height={50} width={50} />
-      </button>
+      </div>
     </nav>
   );
 }
